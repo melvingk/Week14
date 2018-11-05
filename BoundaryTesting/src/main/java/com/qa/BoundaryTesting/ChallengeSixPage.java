@@ -16,10 +16,5 @@ public class ChallengeSixPage {
 		textbox.submit();
 		
 	}
-	public String getValues() {
-		String dateTime = textbox.getText();
-		return dateTime;
-	}
-	
 	
 }
