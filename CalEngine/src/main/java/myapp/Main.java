@@ -4,9 +4,12 @@ import com.melvin.CalEngine.Adder;
 import com.melvin.CalEngine.CalculateBase;
 import com.melvin.CalEngine.CalculateHelper;
 import com.melvin.CalEngine.Divider;
+import com.melvin.CalEngine.DynamicHelper;
 import com.melvin.CalEngine.InvalidStatementException;
 import com.melvin.CalEngine.MathEquation;
+import com.melvin.CalEngine.MathProcessing;
 import com.melvin.CalEngine.Multiplier;
+import com.melvin.CalEngine.PowerOf;
 import com.melvin.CalEngine.Subtracter;
 
 public class Main {
@@ -14,7 +17,38 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
+//		useMathEquation();
+//		useCalculateBase();
+//		useCalculatorHelper();
+		useDynamicHelper();
+	
+	}
+// Using interfaces and various classes created abstract methods(not literally abstract) to 		
+	
+	static void useDynamicHelper() {
+	String[] statements = {
+			"add 25.0 92.0",  // 25.0 + 92.0 = 117.0
+			"power 5.0 2.0"   // 5.0 ^ 2.0 =25.0
+	};		
+	
+	DynamicHelper helper = new DynamicHelper (new MathProcessing[] {
+			new Adder(),
+			new PowerOf()
+	});
+			
+	for (String statement:statements)
+			{
+				String output = helper.process(statement);
+				System.out.println(output);
+			}
+	
+	
+	}
+	
+	
+//Using for the string manipulation with the classes CalculateHelper,InvalidStatementException,	
+//MathCommand(an enum) 
+	static void useCalculatorHelper() {	
 		String [] statements = {
 				
 				"add 1.0",
@@ -41,8 +75,9 @@ public class Main {
 			}
 			
 		}
-				
-		
+	}
+	// Using a encapsulation, a constructor and switch statement using the MathEquation class.
+	static void useMathEquation() {
 	MathEquation [] equations = new MathEquation[4];
 	equations[0] = new MathEquation('d',100.0d,50.0d);
 	equations[1] = new MathEquation('a',25.0d,92.0d);
@@ -51,14 +86,18 @@ public class Main {
 	
 	for (MathEquation equation : equations) {
 		equation.execute();
+		System.out.println();
+		System.out.println("Using Basic Calculator");
 		System.out.print("result = ");
 		System.out.println(equation.getResult());
 	}
 	
 	
+	// Using overloading, multiple constructors and a switch statement, the class MathEquation was used.
 	System.out.println();
 	System.out.println("Using Overload");
 	System.out.println();
+	
 	
 	double leftDouble = 9.0d;
 	double rightDouble = 4.0d;
@@ -70,6 +109,9 @@ public class Main {
 	System.out.print("RESULT = ");
 	System.out.println(equationOverload.getResult() );
 	
+	}
+	static void useCalculateBase() {
+	//Using Inheritance, abstraction, a constructor and the classes CalcualteBase, Adder, Subtracter, Multiplier and Divider.
 	System.out.println();
 	System.out.println("Using Inheritance");
 	System.out.println();
@@ -87,10 +129,10 @@ public class Main {
 		System.out.println(calculator.getResult() );
 		
 	}
-	
+	}
 	
 	}
 
-	}
+	
 	
 

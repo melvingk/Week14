@@ -1,6 +1,7 @@
 package com.melvin.CalEngine;
 
 public abstract class CalculateBase {
+//implements MathProcessing 
 	private double leftVal;
 	private double rightVal;
 	private double result;
@@ -19,6 +20,10 @@ public abstract class CalculateBase {
 	public double getRightVal() {
 		return rightVal;
 	}
+	public void setRightVal(double rightVal) {
+		this.rightVal = rightVal;
+	}
+	
 
 	public CalculateBase() {}
 	public CalculateBase(double leftVal, double rightVal) {

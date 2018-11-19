@@ -65,13 +65,21 @@ public void execute() {
 		result = leftVal - rightVal;
 		break;
 	case 'd':
-		result = rightVal != 0.0d ? leftVal/rightVal : 0.0d;
+		if (rightVal != 0.0d)
+		{
+			result = leftVal/rightVal;
+		}
+		else
+		{
+			result = 0.0d;
+		}
+//		result = rightVal != 0.0d ? leftVal/rightVal : 0.0d; --> same thing just if statement with ternary operators
 		break;
 	case 'm':
 		result = leftVal * rightVal;
 		break;
 	default:
-		System.out.println("Error - invlaid OpCode");
+		System.out.println("Error - invalid OpCode");
 		result = 0.0d;
 		break; 
 	}
